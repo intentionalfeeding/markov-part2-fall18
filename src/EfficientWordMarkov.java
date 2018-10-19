@@ -26,7 +26,7 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 			}
 			if (!myMap.containsKey(temp)){
 				ArrayList<String> newAl = new ArrayList<String>();
-				if (i+myOrder >= myWords.length){
+				if (i+myOrder-1 == myWords.length-1){
 					newAl.add(PSEUDO_EOS);
 				} else{
 					newAl.add(word);
@@ -34,7 +34,7 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 				myMap.put(temp, newAl);
 			} else {
 				ArrayList<String> updateAl = myMap.get(temp);
-				if (i+myOrder >= myWords.length){
+				if (i+myOrder-1 == myWords.length-1){
 					updateAl.add(PSEUDO_EOS);
 				} else{
 					updateAl.add(word);
