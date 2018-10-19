@@ -1,6 +1,6 @@
 This is the analysis for Markov Part 2, Fall 2018
 
-Include your name and net id here. Answer the questions from the assignment 
+Russell Meng xm21. Answer the questions from the assignment 
 that are reproduced below
 
 (1) Determine (from running Benchmark.java) how long it takes for 
@@ -10,6 +10,30 @@ Include these timings in your report.
 The program also generates 4,096 characters using texts that increase in 
 size from 496,768 characters to 4,967,680 characters (10 times the number).  
 Do you the timings support the O(NT) analysis for BaseMarkov?
+
+Yes but more precisely:
+they follow O(NT) when #chars(T) is not big because we can see when #chars reaches 16000 the increase in time is not linear anymore(below linear increment);
+they follow O(NT) always as we can see the increment is linear all the time.
+
+time	source	#chars
+1.503	496768	2000
+3.003	496768	4000
+6.071	496768	8000
+9.796	496768	16000
+23.423	496768	32000
+
+2.970	496768	4096
+6.044	993536	4096
+9.091	1490304	4096
+12.238	1987072	4096
+14.818	2483840	4096
+18.088	2980608	4096
+21.368	3477376	4096
+24.386	3974144	4096
+27.748	4470912	4096
+30.695	4967680	4096
+
+Finished tests
 
 
 
@@ -21,7 +45,123 @@ The program also generates 4,096 characters using texts that increase in
 size from 496,768 characters to 4,967,680 characters (10 times the number).  
 Do you the timings support the O(N+T) analysis for EfficientMarkov?
 
+yes and no, it is much faster than BaseMarkov, obviously it is not O(NT) anymore, though more precisely they follow O(N+T) for N, 
+but for T it seems to me an O(1) since the time does not vary with different T
+
+Starting tests
+
+time	source	#chars
+0.102	496768	2000
+0.079	496768	4000
+0.095	496768	8000
+0.102	496768	16000
+0.082	496768	32000
+
+0.080	496768	4096
+0.216	993536	4096
+0.278	1490304	4096
+0.344	1987072	4096
+0.473	2483840	4096
+0.737	2980608	4096
+0.659	3477376	4096
+0.742	3974144	4096
+0.841	4470912	4096
+1.167	4967680	4096
+
+Finished tests
+
+
 (3)The tests in the class Benchmark use an order-5 Markov Model. 
 Run tests that you think are appropriate to determine if the order of the 
 Markov Model has a significant impact on the running time for BaseMarkov. 
 Explain your reasoning.
+
+Yes and no; when Order is small and varies not hugely, we can see as below there is nearly no impact; Though when Order is large it has a significant impact on the running time.
+
+Order = 5
+
+time	source	#chars
+0.102	496768	2000
+0.079	496768	4000
+0.095	496768	8000
+0.102	496768	16000
+0.082	496768	32000
+
+0.080	496768	4096
+0.216	993536	4096
+0.278	1490304	4096
+0.344	1987072	4096
+0.473	2483840	4096
+0.737	2980608	4096
+0.659	3477376	4096
+0.742	3974144	4096
+0.841	4470912	4096
+1.167	4967680	4096
+
+Finished tests
+
+Order = 10
+
+time	source	#chars
+0.130	496768	2000
+0.109	496768	4000
+0.112	496768	8000
+0.096	496768	16000
+0.106	496768	32000
+
+0.087	496768	4096
+0.220	993536	4096
+0.331	1490304	4096
+0.454	1987072	4096
+0.602	2483840	4096
+0.778	2980608	4096
+0.940	3477376	4096
+1.098	3974144	4096
+1.169	4470912	4096
+1.396	4967680	4096
+
+Finished tests
+
+Order = 100
+
+time	source	#chars
+0.166	496768	2000
+0.141	496768	4000
+0.144	496768	8000
+0.167	496768	16000
+0.167	496768	32000
+
+0.169	496768	4096
+0.319	993536	4096
+0.576	1490304	4096
+0.824	1987072	4096
+1.200	2483840	4096
+1.568	2980608	4096
+1.868	3477376	4096
+2.280	3974144	4096
+2.608	4470912	4096
+3.141	4967680	4096
+
+Finished tests
+
+Order = 1000
+
+time	source	#chars
+1.147	496768	2000
+1.192	496768	4000
+1.181	496768	8000
+1.325	496768	16000
+1.380	496768	32000
+
+1.097	496768	4096
+2.810	993536	4096
+4.100	1490304	4096
+4.953	1987072	4096
+6.085	2483840	4096
+7.192	2980608	4096
+8.382	3477376	4096
+9.213	3974144	4096
+10.184	4470912	4096
+11.233	4967680	4096
+
+Finished tests
