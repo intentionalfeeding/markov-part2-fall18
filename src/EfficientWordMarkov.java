@@ -15,25 +15,25 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 		myMap = new HashMap<WordGram, ArrayList<String>>();
 	}
 	
-	public void setTraining(String[] words){
-		myWords = words;
+	public void setTraining(String text){
+		myWords = text.split(" ");
 		myMap.clear();
-		for (int i = 0; i<words.length-myOrder+1;i++){
-			WordGram temp = new WordGram(words,i,myOrder);
+		for (int i = 0; i<myWords.length-myOrder+1;i++){
+			WordGram temp = new WordGram(myWords,i,myOrder);
 			if (!myMap.containsKey(temp)){
 				ArrayList<String> newAl = new ArrayList<String>();
-				if (i+myOrder >= words.length){
+				if (i+myOrder >= myWords.length){
 					newAl.add(PSEUDO_EOS);
 				} else{
-					newAl.add(words[i+myOrder]);
+					newAl.add(myWords[i+myOrder]);
 				}
 				myMap.put(temp, newAl);
 			} else {
 				ArrayList<String> updateAl = myMap.get(temp);
-				if (i+myOrder >= words.length){
+				if (i+myOrder >= myWords.length){
 					updateAl.add(PSEUDO_EOS);
 				} else{
-					updateAl.add(words[i+myOrder]);
+					updateAl.add(myWords[i+myOrder]);
 				}
 				myMap.put(temp, updateAl);
 			}
