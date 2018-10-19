@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 
 public class EfficientMarkov extends BaseMarkov{
-	protected Map<String, ArrayList<String>> myMap;
+	private Map<String, ArrayList<String>> myMap;
 	
 	public EfficientMarkov(){
 		super(3);
