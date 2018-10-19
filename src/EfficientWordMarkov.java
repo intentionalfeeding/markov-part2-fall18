@@ -6,12 +6,12 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 	private Map<WordGram, ArrayList<String>> myMap;
 	
 	public EfficientWordMarkov(){
-		super(3);
+		this(3);
 		myMap = new HashMap<WordGram, ArrayList<String>>();
 	}
 	
 	public EfficientWordMarkov(int order){
-		super(order);
+		this(order);
 		myMap = new HashMap<WordGram, ArrayList<String>>();
 	}
 	
