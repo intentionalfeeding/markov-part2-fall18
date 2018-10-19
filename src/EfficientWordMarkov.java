@@ -18,18 +18,14 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 	public void setTraining(String text){
 		myWords = text.split(" ");
 		myMap.clear();
-		String word = "";
 		for (int i = 0; i<myWords.length-myOrder+1;i++){
 			WordGram temp = new WordGram(myWords,i,myOrder);
-			if(i+myOrder-1 != myWords.length-1){
-				word = myWords[i+myOrder];
-			}
 			if (!myMap.containsKey(temp)){
 				ArrayList<String> newAl = new ArrayList<String>();
 				if (i+myOrder-1 == myWords.length-1){
 					newAl.add(PSEUDO_EOS);
 				} else{
-					newAl.add(word);
+					newAl.add(myWords[i+myOrder]);
 				}
 				myMap.put(temp, newAl);
 			} else {
@@ -37,7 +33,7 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 				if (i+myOrder-1 == myWords.length-1){
 					updateAl.add(PSEUDO_EOS);
 				} else{
-					updateAl.add(word);
+					updateAl.add(myWords[i+myOrder]);
 				}
 				myMap.put(temp, updateAl);
 			}
