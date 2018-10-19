@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 public class EfficientWordMarkov extends BaseWordMarkov{
-	protected Map<WordGram, ArrayList<String>> myMap;
+	private Map<WordGram, ArrayList<String>> myMap;
 	
 	public EfficientWordMarkov(){
 		this(3);
