@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 public class EfficientWordMarkov extends BaseWordMarkov{
-	private Map<WordGram, ArrayList<String>> myMap;
+	protected Map<WordGram, ArrayList<String>> myMap;
 	
 	public EfficientWordMarkov(){
 		this(3);
@@ -11,7 +11,7 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 	}
 	
 	public EfficientWordMarkov(int order){
-		this(order);
+		super(order);
 		myMap = new HashMap<WordGram, ArrayList<String>>();
 	}
 	
@@ -22,7 +22,7 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 			WordGram temp = new WordGram(myWords,i,myOrder);
 			if (!myMap.containsKey(temp)){
 				ArrayList<String> newAl = new ArrayList<String>();
-				if (i+myOrder>=myWords.length){
+				if (i+myOrder==myWords.length){
 					newAl.add(PSEUDO_EOS);
 				} else{
 					newAl.add(myWords[i+myOrder]);
@@ -30,7 +30,7 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 				myMap.put(temp, newAl);
 			} else {
 				ArrayList<String> updateAl = myMap.get(temp);
-				if (i+myOrder>=myWords.length){
+				if (i+myOrder==myWords.length){
 					updateAl.add(PSEUDO_EOS);
 				} else{
 					updateAl.add(myWords[i+myOrder]);
