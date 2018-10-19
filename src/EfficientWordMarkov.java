@@ -22,7 +22,7 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 			WordGram temp = new WordGram(myWords,i,myOrder);
 			if (!myMap.containsKey(temp)){
 				ArrayList<String> newAl = new ArrayList<String>();
-				if (i+myOrder-1 == myWords.length-1){
+				if (i+myOrder>=myWords.length){
 					newAl.add(PSEUDO_EOS);
 				} else{
 					newAl.add(myWords[i+myOrder]);
@@ -30,7 +30,7 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 				myMap.put(temp, newAl);
 			} else {
 				ArrayList<String> updateAl = myMap.get(temp);
-				if (i+myOrder-1 == myWords.length-1){
+				if (i+myOrder>=myWords.length){
 					updateAl.add(PSEUDO_EOS);
 				} else{
 					updateAl.add(myWords[i+myOrder]);
